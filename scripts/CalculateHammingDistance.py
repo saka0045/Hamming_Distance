@@ -37,10 +37,13 @@ def main():
 
     print(index_list)
 
+    # Compare all of the index in the list with one another and store the value in a dictionary
     hamming_distance_dict = {}
 
     for base_index, compare_index in itertools.product(index_list, repeat=2):
         hamming_distance = compare_sequences(base_index, compare_index)
+        if 3 < hamming_distance < 0:
+            print(base_index + " and " + compare_index + " are less than 3 bp different")
         if base_index not in hamming_distance_dict.keys():
             hamming_distance_dict[base_index] = []
             hamming_distance_dict[base_index].append(str(hamming_distance))
